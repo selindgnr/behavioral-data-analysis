@@ -1,52 +1,62 @@
 # Behavioral Data Analysis
 
-This repository contains a small portfolio project that demonstrates how to analyze behavioral data in Python.  The data used here are **simulated** to avoid sharing any sensitive or proprietary information.  The notebook walks through a typical workflow, from generating synthetic data to performing statistical tests.
+This repository is a compact behavioral data analysis portfolio project built with simulated repeated-measures data. The notebook shows a full workflow: data generation, quality control, participant-level summaries, visualization, and inferential statistics.
+
+## Key Plotly visuals
+
+### 1. Mean switch rate by condition
+
+This Plotly bar chart summarizes the condition effect with standard error bars, making the baseline vs. adaptation comparison easy to read at a glance.
+
+![Mean Switch Rate by Condition](assets/plotly-condition-means.png)
+
+### 2. Participant-level change across conditions
+
+This paired Plotly line chart shows the within-subject pattern directly, which is often the most important behavioral-data view in a repeated-measures design.
+
+![Participant-Level Change Across Conditions](assets/plotly-participant-comparison.png)
 
 ## What this project does
 
-The project shows how to:
+- Generate a simulated behavioral dataset for `baseline` and `adaptation` conditions across multiple participants.
+- Apply a simple quality-control exclusion based on minimum completed trials.
+- Summarize participant-level `switch_rate` outcomes.
+- Visualize the two most important behavioral patterns with Plotly.
+- Run a paired `t-test` and a repeated-measures ANOVA.
 
-* Generate a simple behavioral dataset for two experimental conditions (for example, a baseline and an adaptation condition) across multiple participants.
-* Inspect and clean the data, including a basic quality check to identify participants who do not meet a minimum number of trials.
-* Summarize the data at the participant level and visualize the distributions using bar plots with error bars.
-* Perform a paired **t‑test** to compare conditions and a **repeated‑measures ANOVA** to assess within‑subject effects.
+## How to run
 
-## How to run the analysis
+1. Create and activate a virtual environment.
 
-1. **Clone the repository** and change into the project directory:
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
 
-   ```bash
-   git clone https://github.com/yourusername/behavioral-data-analysis.git
-   cd behavioral-data-analysis
-   ```
+2. Install dependencies.
 
-2. **Create and activate a virtual environment** (recommended but optional):
+```bash
+pip install -r requirements.txt
+```
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+3. Generate the Plotly screenshots used in this README.
 
-3. **Install the required Python packages** listed in `requirements.txt`:
+```bash
+python generate_plotly_assets.py
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+4. Open the notebook to explore or rerun the full analysis.
 
-4. **Launch Jupyter Notebook** and open `analysis.ipynb`:
+```bash
+jupyter notebook analysis.ipynb
+```
 
-   ```bash
-   jupyter notebook
-   ```
-
-   In your browser, navigate to `analysis.ipynb` to run or inspect the analysis.  Each code cell contains comments in English explaining the purpose of the step.
+The script writes both static PNG screenshots and interactive HTML files into `assets/`.
 
 ## Contents
 
 | File | Description |
 | --- | --- |
-| `README.md` | This document, providing an overview of the project and instructions for running it. |
-| `analysis.ipynb` | A Jupyter notebook demonstrating the generation and analysis of simulated behavioral data.  The notebook includes code cells with English variable names and explanatory comments. |
-| `requirements.txt` | A list of Python packages required to run the notebook. |
-
-Feel free to adapt this project for your own portfolio, adding more complex analyses or real data once you are comfortable with the workflow.
+| `analysis.ipynb` | Main notebook for the behavioral analysis workflow, now using Plotly for the two key graphs. |
+| `generate_plotly_assets.py` | Recreates the simulated dataset and exports the Plotly figures to `assets/`. |
+| `requirements.txt` | Python dependencies required for the notebook and Plotly figure export. |
